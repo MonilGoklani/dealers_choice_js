@@ -18,5 +18,5 @@ app.get('/details/:id',(req,res,next)=>{
     res.send(movieInfo(movieData.find(id)))
     })
 
-const port = 3001
+const port = 3000
 app.listen(port,()=>{console.log(`Listening on port: ${port}`)})
