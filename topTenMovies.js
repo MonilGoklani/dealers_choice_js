@@ -15,8 +15,18 @@ res.send(movieList(movieData.list()))
 
 app.get('/details/:id',(req,res,next)=>{
     const id = req.params.id
-    res.send(movieInfo(movieData.find(id)))
+    const movie = movieData.find(id)
+    if(!movie.id){
+        throw new Error('Not Found')
+    }
+    res.send(movieInfo(movie))
     })
 
 const port = 3000
+
+app.use(function(err,req,res,next){
+    console.log(err.stack)
+    res.status(404).send('PAGE NOT FOUND')
+})
+
 app.listen(port,()=>{console.log(`Listening on port: ${port}`)})
