@@ -22,7 +22,7 @@ app.get('/details/:id',(req,res,next)=>{
     res.send(movieInfo(movie))
     })
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(function(err,req,res,next){
     console.log(err.stack)
