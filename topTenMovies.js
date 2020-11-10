@@ -2,7 +2,6 @@ const express = require('express');
 const movieList = require('./views/movieList');
 const movieInfo = require('./views/movieInfo');
 const path = require('path');
-const movieData = require('./movieData');
 const app = express();
 const {client,syncAndSeed} = require('./db')
 
@@ -21,7 +20,6 @@ app.get('/', async(req,res,next)=>{
 
 app.get('/details/:id',async(req,res,next)=>{
     const movie = await client.query(`SELECT * FROM movies WHERE movies.id=${req.params.id};`)
-    console.log(movie.rows[0])
     if(!movie.rows[0].id){
         throw new Error('Not Found')
     }
