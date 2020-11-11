@@ -1,5 +1,5 @@
 const pg = require('pg')
-const postgresURL  = process.env.DATABASE_URL || 'postgres://localhost/dealers_choice'
+const postgresURL  = process.env.DATABASE_URL
 const client = new pg.Client(postgresURL)
 
 const syncAndSeed = async() => {
